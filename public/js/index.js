@@ -11,9 +11,7 @@ import * as components from './components.js';
     function getCategoryList() {
       xhrList.open('GET', 'https://api.chucknorris.io/jokes/categories');
       xhrList.send();
-
       xhrList.addEventListener('readystatechange', handleStatus, false);
-
     }
 
     function handleStatus() {
@@ -48,7 +46,6 @@ import * as components from './components.js';
     function getCategorie(obj) {
       xhrCategory.open('GET', `https://api.chucknorris.io/jokes/random?category=${obj}`, true);
       xhrCategory.send();
-
       xhrCategory.addEventListener('readystatechange', handleStatusCategories, false);
     }
 
