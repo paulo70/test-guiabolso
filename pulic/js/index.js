@@ -3,22 +3,22 @@ import * as components from './components.js';
   'user strict';
   const app = (function() {
 
-    const ajxList = new XMLHttpRequest();
-    const ajxCategory = new XMLHttpRequest();
+    const xhrList = new XMLHttpRequest();
+    const xhrCategory = new XMLHttpRequest();
     const $container = doc.querySelector('[data-js="container-category"]');
     const $containerList = doc.querySelector('[data-js="container-list"]');
 
     function getCategoryList() {
-      ajxList.open('GET', 'https://api.chucknorris.io/jokes/categories');
-      ajxList.send();
+      xhrList.open('GET', 'https://api.chucknorris.io/jokes/categories');
+      xhrList.send();
 
-      ajxList.addEventListener('readystatechange', handleStatus, false);
+      xhrList.addEventListener('readystatechange', handleStatus, false);
 
     }
 
     function handleStatus() {
-      if (components.isRequestOk(ajxList)) {
-        const data = components.parseData(ajxList);
+      if (components.isRequestOk(xhrList)) {
+        const data = components.parseData(xhrList);
         template(data);
       }
     }
@@ -27,7 +27,6 @@ import * as components from './components.js';
       Array.from(element).map((item) => item.addEventListener('click', function(e) {
         const url = this.textContent;
         getCategorie(url);
-        console.log(url);
       }));
     }
 
@@ -47,15 +46,15 @@ import * as components from './components.js';
     }
 
     function getCategorie(obj) {
-      ajxCategory.open('GET', `https://api.chucknorris.io/jokes/random?category=${obj}`, true);
-      ajxCategory.send();
+      xhrCategory.open('GET', `https://api.chucknorris.io/jokes/random?category=${obj}`, true);
+      xhrCategory.send();
 
-      ajxCategory.addEventListener('readystatechange', handleStatusCategories, false);
+      xhrCategory.addEventListener('readystatechange', handleStatusCategories, false);
     }
 
     function handleStatusCategories() {
-      if (components.isRequestOk(ajxCategory)) {
-        const dados = components.parseData(ajxCategory);
+      if (components.isRequestOk(xhrCategory)) {
+        const dados = components.parseData(xhrCategory);
         templateInfo(dados);
       }
     }
