@@ -6,7 +6,7 @@ h1 {
   font-family: arial;
 }
 
-@import 'mixin';  
+@import 'mixin';
 .wrap {
   width: 100%;
   header {
@@ -15,6 +15,7 @@ h1 {
     h1 {
       margin: 0 0.625em;
       color: #fff;
+      font-size: 2.500em;
     }
   }
 
@@ -59,6 +60,16 @@ h1 {
     }
   }
 
+  .box-common+.box-common {
+    @include respontTo(tablet) {
+      width: 55%;
+    }
+
+    @include respontTo(smartphone) {
+      width: 55%;
+    }
+  }
+
   .box-results-request {
     border: 1px solid #42b2cc;
     padding: 0.625em;
@@ -74,9 +85,22 @@ h1 {
       color: #656565;
       margin: 0.625em 0;
       display: block;
-      font-size: 1.200em;
+      font-size: 0.875em;
       a {
         color: #656565;
+        font-size: 0.875em;
+      }
+
+      &.title {
+        font-size: 20px;
+      }
+    }
+  }
+
+  header {
+    h1 {
+      @include respontTo(smartphone) {
+        font-size: 2.143em;
       }
     }
   }

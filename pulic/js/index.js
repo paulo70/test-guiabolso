@@ -1,5 +1,6 @@
-import * as components from './components.js'
+import * as components from './components.js';
 (function(doc) {
+  'user strict';
   const app = (function() {
 
     const ajxList = new XMLHttpRequest();
@@ -64,19 +65,19 @@ import * as components from './components.js'
        <section>
         <div class='box-results-request'>
           <div class='thumb'><img src='${obj.icon_url}'></div>        
-          <span>Title: ${components.isNull(obj)}</span>
+          <span class="title">Title: ${components.isNull(obj)}</span>
           <span>Link: <a href='${obj.url}' target='_blank'>${obj.url}</a></span>
           <span>Description: ${obj.value}</span>
         </div>
        </section>
 
-      `
+      `;
       $containerList.innerHTML = markupInfo;
     }
 
     return {
       getCategoryList
-    }
+    };
   })();
 
   app.getCategoryList();

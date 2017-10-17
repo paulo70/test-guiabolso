@@ -3,7 +3,7 @@ export function isRequestOk(elem) {
 }
 
 export function parseData(elem) {
-  return JSON.parse(elem.responseText)
+  return JSON.parse(elem.responseText);
 }
 
 export function isNull(elem) {
