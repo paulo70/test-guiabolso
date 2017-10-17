@@ -1,0 +1,24 @@
+$smartphone: 480px;
+$tabletPortrait: 767px;
+$tabletLandscape:1024px;
+
+@mixin border-radius($border) {
+  -webkit-border-radius: $border;
+  -moz-border-radius: $border;
+  -ms-border-radius: $border;
+  border-radius: $border;
+}
+
+@mixin respontTo($media) {
+  @if $media==smartphone {
+    @media (max-width: $smartphone) {
+      @content;
+    }
+  }
+
+  @else if $media==tablet {
+    @media (min-width: $tabletPortrait) and (max-width: $tabletLandscape) {
+      @content;
+    }
+  }
+}
