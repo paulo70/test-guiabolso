@@ -12,7 +12,7 @@ const htmlmin = require('gulp-htmlmin');
 
 const entryPoint = 'js/index.js';
 
-gulp.task('trasnpiler', () => {
+gulp.task('transpiler', () => {
   return browserify(entryPoint, { debug: true })
     .transform(babelify, { presets: ['es2015'] })
     .bundle()
@@ -43,5 +43,8 @@ gulp.task('htmlmin', () => {
 
 });
 
+gulp.task('watch', ['transpiler'], () => {
+  return gulp.watch('js/**/*.js', ['transpiler']);
+});
 
-gulp.task('default', ['trasnpiler', 'jshint', 'sass', 'htmlmin']);
+gulp.task('default', ['transpiler', 'jshint', 'sass', 'htmlmin', 'watch']);
